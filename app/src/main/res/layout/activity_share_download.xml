@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:gravity="center_horizontal"
+              android:layout_height="match_parent">
+	<include layout="@layout/custom_toolbar"/>
+	<TextView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="12dp"
+			android:layout_marginLeft="15dp"
+			android:layout_marginRight="15dp"
+			android:layout_marginTop="12dp"
+			android:background="@drawable/shape_notclickbg"
+			android:lineSpacingExtra="2dp"
+			android:padding="12dp"
+			android:text="好用请推荐给你的小伙伴吧，扫描复制链接，即可下载快牙分享好友吧~"
+			android:textColor="#666666"
+			android:textSize="15sp" />
+
+
+	<ImageView
+			android:id="@+id/iv_erweima"
+			android:layout_width="220dp"
+			android:layout_height="220dp"
+			android:layout_marginTop="40dp"
+			android:src="@drawable/qrcode"
+			android:background="@color/white" />
+
+
+
+</LinearLayout>

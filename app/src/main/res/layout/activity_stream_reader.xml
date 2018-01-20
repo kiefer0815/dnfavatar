@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" xmlns:fab="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black">
+
+        <com.zbzapp.dnfavatar.ui.widget.ZoomableRecyclerView
+            android:id="@+id/reader_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible"/>
+        <TextView
+            android:id="@+id/reader_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/reader_picture_loading"
+            android:textColor="@color/white"/>
+        <include layout="@layout/custom_reader_info"/>
+        <include layout="@layout/custom_back_btn"/>
+        <include layout="@layout/custom_seek_bar"/>
+        <com.github.clans.fab.FloatingActionMenu
+                android:id="@+id/menu_labels_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                fab:menu_labels_ellipsize="end"
+                fab:menu_labels_singleLine="true"
+                fab:menu_labels_position="right">
+
+            <com.github.clans.fab.FloatingActionButton
+                    android:id="@+id/float_fav"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_favorite_border_white_24dp"
+                    fab:fab_size="mini"
+                    fab:fab_label="收藏" />
+
+            <com.github.clans.fab.FloatingActionButton
+                    android:id="@+id/float_download"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_file_download_white_24dp"
+                    fab:fab_size="mini"
+                    fab:fab_label="下载" />
+
+        </com.github.clans.fab.FloatingActionMenu>
+        <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/float_replay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/ic_replay_white_24dp"
+                fab:fab_size="mini"
+                fab:fab_label="网页打开" />
+        <RelativeLayout
+                android:id="@+id/rl_read"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+        >
+        </RelativeLayout>
+    </RelativeLayout>
+    <include layout="@layout/custom_night_mask"/>
+</FrameLayout>

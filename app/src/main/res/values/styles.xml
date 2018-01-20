@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    </style>
+
+    <style name="AppThemeBlue" parent="AppTheme">
+        <item name="colorPrimary">@color/colorPrimaryBlue</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryBlueDark</item>
+        <item name="colorAccent">@color/colorPrimaryBlueDark</item>
+        <item name="alertDialogTheme">@style/DialogThemeBlue</item>
+
+        <item name="fab_colorNormal">@color/colorPrimaryBlue</item>
+        <item name="fab_colorPressed">@color/colorPrimaryBlueDark</item>
+        <item name="fab_colorRipple">@color/colorPrimaryBlueDark</item>
+        <item name="menu_colorNormal">@color/colorPrimaryBlue</item>
+        <item name="menu_colorPressed">@color/colorPrimaryBlueDark</item>
+        <item name="menu_colorRipple">@color/colorPrimaryBlueDark</item>
+    </style>
+
+    <style name="DialogThemeBlue" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/colorPrimaryBlueDark</item>
+    </style>
+
+    <style name="AppThemeGrey" parent="AppTheme">
+        <item name="colorPrimary">@color/colorPrimaryGrey</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryGreyDark</item>
+        <item name="colorAccent">@color/colorPrimaryGreyDark</item>
+        <item name="alertDialogTheme">@style/DialogThemeGrey</item>
+    </style>
+
+    <style name="DialogThemeGrey" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/colorPrimaryGreyDark</item>
+    </style>
+
+    <style name="AppThemeTeal" parent="AppTheme">
+        <item name="colorPrimary">@color/colorPrimaryTeal</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryTealDark</item>
+        <item name="colorAccent">@color/colorPrimaryTealDark</item>
+        <item name="alertDialogTheme">@style/DialogThemeTeal</item>
+    </style>
+
+    <style name="DialogThemeTeal" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/colorPrimaryTealDark</item>
+    </style>
+
+    <style name="AppThemePurple" parent="AppTheme">
+        <item name="colorPrimary">@color/colorPrimaryPurple</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryPurpleDark</item>
+        <item name="colorAccent">@color/colorPrimaryPurpleDark</item>
+        <item name="alertDialogTheme">@style/DialogThemePurple</item>
+    </style>
+
+    <style name="DialogThemePurple" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/colorPrimaryPurpleDark</item>
+    </style>
+
+    <style name="AppThemePink" parent="AppTheme">
+        <item name="colorPrimary">@color/colorPrimaryPink</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryPinkDark</item>
+        <item name="colorAccent">@color/colorPrimaryPinkDark</item>
+        <item name="alertDialogTheme">@style/DialogThemePink</item>
+    </style>
+
+    <style name="DialogThemePink" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/colorPrimaryPinkDark</item>
+    </style>
+
+    <style name="AppThemeBrown" parent="AppTheme">
+        <item name="colorPrimary">@color/colorPrimaryBrown</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryBrownDark</item>
+        <item name="colorAccent">@color/colorPrimaryBrownDark</item>
+        <item name="alertDialogTheme">@style/DialogThemeBrown</item>
+    </style>
+
+    <style name="DialogThemeBrown" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">@color/colorPrimaryBrownDark</item>
+    </style>
+
+    <style name="TextInputTheme">
+        <item name="android:textColorSecondary">@color/white</item>
+        <item name="colorAccent">@color/white</item>
+    </style>
+    <style name="AppTheme.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimaryBlue</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryBlueDark</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!--titleBar样式-->
+    <style name="ToolbarStyle" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="actionBarItemBackground">@drawable/toolbarItemBackground</item>
+        <item name="selectableItemBackground">@drawable/toolbarItemBackground</item>
+        <item name="titleTextAppearance">@style/ToolBar.Title</item>
+        <item name="subtitleTextAppearance">@style/Toolbar.SubTitle</item>
+        <item name="android:windowNoTitle">true</item>
+        <!--<item name="android:textSize">18sp</item> &lt;!&ndash;  搞掂字体大小&ndash;&gt;-->
+    </style>
+    <!--titlebar 标题-->
+    <style name="ToolBar.Title" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">18.0sp</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <!--titlebar 副标题-->
+    <style name="Toolbar.SubTitle" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Subtitle">
+        <item name="android:textSize">9.0sp</item>
+        <item name="android:textColor">#99ffffff</item>
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="MaterialSearchViewStyle">
+        <!-- Background for the search bar-->
+        <item name="searchBackground">@color/colorPrimaryBlue</item>
+
+        <!-- Change voice icon-->
+        <item name="searchVoiceIcon">@drawable/ic_action_voice_search_inverted</item>
+
+        <!-- Change clear text icon-->
+        <item name="searchCloseIcon">@drawable/ic_action_navigation_close_inverted</item>
+
+        <!-- Change up icon-->
+        <item name="searchBackIcon">@drawable/ic_action_navigation_arrow_back_inverted</item>
+
+        <!-- Change icon for the suggestions-->
+        <item name="searchSuggestionIcon">@drawable/ic_suggestion</item>
+
+        <!-- Change background for the suggestions list view-->
+        <item name="searchSuggestionBackground">@android:color/white</item>
+
+        <!-- Change text color for edit text. This will also be the color of the cursor-->
+        <item name="android:textColor">@color/theme_primary_text_inverted</item>
+
+        <!-- Change hint text color for edit text-->
+        <item name="android:textColorHint">@color/theme_secondary_text_inverted</item>
+
+        <!-- Hint for edit text-->
+        <item name="android:hint">@string/search_hint</item>
+    </style>
+</resources>
