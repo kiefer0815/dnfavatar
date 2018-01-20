@@ -20,8 +20,8 @@ android {
         applicationId "com.zbzapp.dnfavatar"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 400000
-        versionName "400000"
+        versionCode 400001
+        versionName "400001"
         resConfigs "en", "zh"
         // Enabling multidex support,65535的限制
         multiDexEnabled true
