@@ -292,5 +292,10 @@ public class ResultActivity extends BackActivity implements ResultView, BaseAdap
         Log.i(TAG, "onADOpenOverlay: " + adView.toString());
     }
 
+    @Override
+    public void onADCloseOverlay(NativeExpressADView nativeExpressADView) {
+
+    }
+
 }
 

@@ -88,9 +88,8 @@ public class DetailActivity extends CoordinatorActivity implements DetailView, N
         int source = getIntent().getIntExtra(Extra.EXTRA_SOURCE, -1);
         String cid = getIntent().getStringExtra(Extra.EXTRA_CID);
         mPresenter.load(id, source, cid);
-        final float density = getResources().getDisplayMetrics().density;
 
-        ADSize adSize = new ADSize((int) (getResources().getDisplayMetrics().widthPixels / density), 130); // 不支持MATCH_PARENT or WRAP_CONTENT，必须传入实际的宽高
+        ADSize adSize = new ADSize(ADSize.FULL_WIDTH, 130); // 不支持MATCH_PARENT or WRAP_CONTENT，必须传入实际的宽高
         nativeExpressAD = new NativeExpressAD(DetailActivity.this, adSize, Constants.APPID, Constants.NativeExpressPosID3, this);
         nativeExpressAD.loadAD(1);
     }
@@ -366,6 +365,11 @@ public class DetailActivity extends CoordinatorActivity implements DetailView, N
     @Override
     public void onADOpenOverlay(NativeExpressADView adView) {
         Log.i(TAG, "onADOpenOverlay");
+    }
+
+    @Override
+    public void onADCloseOverlay(NativeExpressADView nativeExpressADView) {
+
     }
 
 }

@@ -12,8 +12,8 @@ public class Constants {
         public static final String InterteristalPosID = "1020427608790559";
         public static final String NativeExpressPosID = "9060422609101046";
         public static final String NativeExpressPosID1 = "8020220639304110";
-        public static final String NativeExpressPosID2 = "4030623649306829";
-        public static final String NativeExpressPosID3 = "9010821781236904";
+        public static final String NativeExpressPosID2 = "3040125918861810";
+        public static final String NativeExpressPosID3 = "9000125988362831";
         // 配置更新
         public static String APP_CONFIG = "app_config";
         public static final String LOCK_SCREEN_STRING ="lock_screen_string";

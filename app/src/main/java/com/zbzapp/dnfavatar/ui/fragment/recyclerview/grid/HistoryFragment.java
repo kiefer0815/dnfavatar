@@ -144,8 +144,7 @@ public class HistoryFragment extends GridFragment implements HistoryView ,Native
 
 
     private void initNativeExpressAD() {
-        final float density = getResources().getDisplayMetrics().density;
-        ADSize adSize = new ADSize((int) (getResources().getDisplayMetrics().widthPixels / density), 130); // 宽、高的单位是dp。ADSize不支持MATCH_PARENT or WRAP_CONTENT，必须传入实际的宽高
+        ADSize adSize = new ADSize(ADSize.FULL_WIDTH, 140); // 宽、高的单位是dp。ADSize不支持MATCH_PARENT or WRAP_CONTENT，必须传入实际的宽高
         mADManager = new NativeExpressAD(getActivity(), adSize, Constants.APPID, Constants.NativeExpressPosID2, this);
         mADManager.loadAD(AD_COUNT);
     }
@@ -210,6 +209,11 @@ public class HistoryFragment extends GridFragment implements HistoryView ,Native
     @Override
     public void onADOpenOverlay(NativeExpressADView adView) {
         Log.i(TAG, "onADOpenOverlay: " + adView.toString());
+    }
+
+    @Override
+    public void onADCloseOverlay(NativeExpressADView nativeExpressADView) {
+
     }
 
 }
