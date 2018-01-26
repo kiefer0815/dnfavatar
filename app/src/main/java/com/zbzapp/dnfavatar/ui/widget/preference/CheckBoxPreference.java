@@ -39,7 +39,7 @@ public class CheckBoxPreference extends FrameLayout implements View.OnClickListe
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         layoutInflater.inflate(R.layout.custom_option_checkbox, this);
 
-        mPreferenceManager = ((App) context.getApplicationContext()).getPreferenceManager();
+        mPreferenceManager = App.getInstance().getPreferenceManager();
 
         init(context, attrs);
 

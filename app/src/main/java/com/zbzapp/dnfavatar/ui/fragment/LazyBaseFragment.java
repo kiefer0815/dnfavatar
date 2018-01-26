@@ -43,7 +43,7 @@ public abstract class LazyBaseFragment extends Fragment implements BaseView {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
                 View view = inflater.inflate(getLayoutRes(), container, false);
                 unbinder = ButterKnife.bind(this, view);
-                mPreference = ((App) getActivity().getApplication()).getPreferenceManager();
+                mPreference = App.getInstance().getPreferenceManager();
                 mBasePresenter = initPresenter();
                 initProgressBar();
                 initView();
@@ -62,7 +62,7 @@ public abstract class LazyBaseFragment extends Fragment implements BaseView {
 
         @Override
         public App getAppInstance() {
-                return (App) getActivity().getApplication();
+                return App.getInstance();
         }
 
         @Override

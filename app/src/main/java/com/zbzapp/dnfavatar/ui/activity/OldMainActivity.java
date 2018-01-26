@@ -196,8 +196,8 @@ public class OldMainActivity extends BaseActivity implements MainView, Navigatio
     protected void onDestroy() {
         super.onDestroy();
         mControllerBuilderProvider.clear();
-        ((App) getApplication()).getBuilderProvider().clear();
-        ((App) getApplication()).getGridRecycledPool().clear();
+        App.getInstance().getBuilderProvider().clear();
+        App.getInstance().getGridRecycledPool().clear();
     }
 
     @Override
@@ -291,7 +291,7 @@ public class OldMainActivity extends BaseActivity implements MainView, Navigatio
         switch (requestCode) {
             case 0:
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    ((App) getApplication()).initRootDocumentFile();
+                    App.getInstance().initRootDocumentFile();
                     HintUtils.showToast(this, R.string.main_permission_success);
                 } else {
                     HintUtils.showToast(this, R.string.main_permission_fail);

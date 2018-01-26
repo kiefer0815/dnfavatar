@@ -1,10 +1,12 @@
 package com.zbzapp.dnfavatar.ui.activity;
 
 import android.content.pm.PackageInfo;
+import android.os.Environment;
 import android.view.View;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
+import com.tencent.tinker.lib.tinker.TinkerInstaller;
 import com.zbzapp.dnfavatar.R;
 import com.zbzapp.dnfavatar.manager.UpdateManager;
 import com.zbzapp.dnfavatar.presenter.AboutPresenter;
@@ -47,6 +49,8 @@ public class AboutActivity extends BackActivity implements AboutView {
     @OnClick(R.id.about_update_btn) void onUpdateClick() {
         UpdateManager.getInstance().init(this);
         UpdateManager.getInstance().checkUpdate(true);
+        TinkerInstaller.onReceiveUpgradePatch(getApplicationContext(), Environment.getExternalStorageDirectory().getAbsolutePath() + "/patch_signed_7zip.apk");
+
     }
 
     @Override

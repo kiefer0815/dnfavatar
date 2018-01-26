@@ -1,7 +1,7 @@
 package com.zbzapp.dnfavatar.presenter;
 
 import android.content.ContentResolver;
-
+import com.zbzapp.dnfavatar.App;
 import com.zbzapp.dnfavatar.core.Backup;
 import com.zbzapp.dnfavatar.manager.ComicManager;
 import com.zbzapp.dnfavatar.manager.TagManager;
@@ -14,17 +14,16 @@ import com.zbzapp.dnfavatar.model.TagRef;
 import com.zbzapp.dnfavatar.rx.RxBus;
 import com.zbzapp.dnfavatar.rx.RxEvent;
 import com.zbzapp.dnfavatar.ui.view.BackupView;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by Hiroshi on 2016/10/19.
@@ -42,7 +41,7 @@ public class BackupPresenter extends BasePresenter<BackupView> {
         mComicManager = ComicManager.getInstance(mBaseView);
         mTagManager = TagManager.getInstance(mBaseView);
         mTagRefManager = TagRefManager.getInstance(mBaseView);
-        mContentResolver = mBaseView.getAppInstance().getContentResolver();
+        mContentResolver = App.application.getContentResolver();
     }
 
     public void loadComicFile() {

@@ -33,7 +33,7 @@
     <!-- 如果需要精确定位的话请加上此权限 -->
 
     <application
-        android:name=".App"
+        android:name="tinker.sample.android.app.SampleApplication"
         android:allowBackup="true"
         android:largeHeap="true"
         tools:replace="android:allowBackup"

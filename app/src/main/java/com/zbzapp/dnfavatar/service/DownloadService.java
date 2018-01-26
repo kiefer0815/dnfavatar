@@ -10,7 +10,6 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.util.LongSparseArray;
-
 import com.zbzapp.dnfavatar.App;
 import com.zbzapp.dnfavatar.R;
 import com.zbzapp.dnfavatar.component.AppGetter;
@@ -30,6 +29,7 @@ import com.zbzapp.dnfavatar.saf.DocumentFile;
 import com.zbzapp.dnfavatar.utils.DocumentUtils;
 import com.zbzapp.dnfavatar.utils.NotificationUtils;
 import com.zbzapp.dnfavatar.utils.StringUtils;
+import okhttp3.*;
 
 import java.io.IOException;
 import java.io.InterruptedIOException;
@@ -39,12 +39,6 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-
-import okhttp3.CacheControl;
-import okhttp3.Headers;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
 /**
  * Created by Hiroshi on 2016/9/1.
@@ -69,7 +63,7 @@ public class DownloadService extends Service implements AppGetter {
     @Override
     public void onCreate() {
         super.onCreate();
-        PreferenceManager manager = ((App) getApplication()).getPreferenceManager();
+        PreferenceManager manager = App.getInstance().getPreferenceManager();
         int num = manager.getInt(PreferenceManager.PREF_DOWNLOAD_THREAD, 1);
         mWorkerArray = new LongSparseArray<>();
         mExecutorService = Executors.newFixedThreadPool(num);
@@ -110,7 +104,7 @@ public class DownloadService extends Service implements AppGetter {
 
     @Override
     public App getAppInstance() {
-        return (App) getApplication();
+        return App.getInstance();
     }
 
     public synchronized void addWorker(long id, Worker worker, Future future) {

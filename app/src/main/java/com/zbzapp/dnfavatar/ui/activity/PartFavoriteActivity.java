@@ -58,7 +58,7 @@ public class PartFavoriteActivity extends BackActivity implements PartFavoriteVi
         super.initView();
         mGridAdapter = new GridAdapter(this, new LinkedList<Object>());
         mGridAdapter.setSymbol(true);
-        mGridAdapter.setProvider(((App) getApplication()).getBuilderProvider());
+        mGridAdapter.setProvider(App.getInstance().getBuilderProvider());
         mGridAdapter.setTitleGetter(SourceManager.getInstance(this).new TitleGetter());
         mGridAdapter.setOnItemClickListener(this);
         mGridAdapter.setOnItemLongClickListener(this);

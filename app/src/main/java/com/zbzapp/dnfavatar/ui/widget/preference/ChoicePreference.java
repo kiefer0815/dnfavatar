@@ -41,7 +41,7 @@ public class ChoicePreference extends Option implements View.OnClickListener {
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         layoutInflater.inflate(R.layout.custom_option, this);
 
-        mPreferenceManager = ((App) context.getApplicationContext()).getPreferenceManager();
+        mPreferenceManager = App.getInstance().getPreferenceManager();
 
         setOnClickListener(this);
     }

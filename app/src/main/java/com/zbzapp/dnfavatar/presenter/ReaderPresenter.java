@@ -2,6 +2,7 @@ package com.zbzapp.dnfavatar.presenter;
 
 import android.net.Uri;
 import android.os.Build;
+import com.zbzapp.dnfavatar.App;
 import com.zbzapp.dnfavatar.core.Download;
 import com.zbzapp.dnfavatar.core.Local;
 import com.zbzapp.dnfavatar.core.Manga;
@@ -128,7 +129,7 @@ public class ReaderPresenter extends BasePresenter<ReaderView> {
     private Observable<List<ImageUrl>> getObservable(Chapter chapter) {
         if (mComic.getLocal()) {
             DocumentFile dir = Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP ?
-                    DocumentFile.fromSubTreeUri(mBaseView.getAppInstance(), Uri.parse(chapter.getPath())) :
+                    DocumentFile.fromSubTreeUri(App.applicationContext, Uri.parse(chapter.getPath())) :
                     DocumentFile.fromFile(new File(Uri.parse(chapter.getPath()).getPath()));
             return Local.images(dir, chapter);
         }
@@ -161,7 +162,7 @@ public class ReaderPresenter extends BasePresenter<ReaderView> {
     }
 
     public void savePicture(InputStream inputStream, String url, String title, int page) {
-        mCompositeSubscription.add(Storage.savePicture(mBaseView.getAppInstance().getContentResolver(),
+        mCompositeSubscription.add(Storage.savePicture(App.application.getContentResolver(),
                 mBaseView.getAppInstance().getDocumentFile(), inputStream, buildPictureName(title, page, url))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<Uri>() {

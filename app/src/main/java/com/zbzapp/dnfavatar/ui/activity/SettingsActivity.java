@@ -9,7 +9,9 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.TextView;
-
+import butterknife.BindView;
+import butterknife.BindViews;
+import butterknife.OnClick;
 import com.zbzapp.dnfavatar.App;
 import com.zbzapp.dnfavatar.R;
 import com.zbzapp.dnfavatar.global.Extra;
@@ -19,22 +21,18 @@ import com.zbzapp.dnfavatar.presenter.SettingsPresenter;
 import com.zbzapp.dnfavatar.saf.DocumentFile;
 import com.zbzapp.dnfavatar.service.DownloadService;
 import com.zbzapp.dnfavatar.ui.activity.settings.ReaderConfigActivity;
-import com.zbzapp.dnfavatar.ui.widget.preference.CheckBoxPreference;
-import com.zbzapp.dnfavatar.ui.widget.preference.ChoicePreference;
-import com.zbzapp.dnfavatar.ui.widget.preference.SliderPreference;
 import com.zbzapp.dnfavatar.ui.fragment.dialog.MessageDialogFragment;
 import com.zbzapp.dnfavatar.ui.fragment.dialog.StorageEditorDialogFragment;
 import com.zbzapp.dnfavatar.ui.view.SettingsView;
+import com.zbzapp.dnfavatar.ui.widget.preference.CheckBoxPreference;
+import com.zbzapp.dnfavatar.ui.widget.preference.ChoicePreference;
+import com.zbzapp.dnfavatar.ui.widget.preference.SliderPreference;
 import com.zbzapp.dnfavatar.utils.ServiceUtils;
 import com.zbzapp.dnfavatar.utils.StringUtils;
 import com.zbzapp.dnfavatar.utils.ThemeUtils;
 
 import java.io.File;
 import java.util.List;
-
-import butterknife.BindView;
-import butterknife.BindViews;
-import butterknife.OnClick;
 
 /**
  * Created by Hiroshi on 2016/9/21.
@@ -264,7 +262,7 @@ public class SettingsActivity extends BackActivity implements SettingsView {
         hideProgressDialog();
         mPreference.putString(PreferenceManager.PREF_OTHER_STORAGE, mTempStorage);
         mStoragePath = mTempStorage;
-        ((App) getApplication()).initRootDocumentFile();
+        App.getInstance().initRootDocumentFile();
         showSnackbar(R.string.common_execute_success);
     }
 

@@ -1,8 +1,8 @@
 package com.zbzapp.dnfavatar.presenter;
 
 import android.support.v4.util.LongSparseArray;
-
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.zbzapp.dnfavatar.App;
 import com.zbzapp.dnfavatar.core.Download;
 import com.zbzapp.dnfavatar.core.Storage;
 import com.zbzapp.dnfavatar.manager.ComicManager;
@@ -18,18 +18,17 @@ import com.zbzapp.dnfavatar.rx.RxEvent;
 import com.zbzapp.dnfavatar.saf.DocumentFile;
 import com.zbzapp.dnfavatar.ui.view.SettingsView;
 import com.zbzapp.dnfavatar.utils.ComicUtils;
-
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
-
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action0;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
+
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Hiroshi on 2016/7/22.
@@ -52,7 +51,7 @@ public class SettingsPresenter extends BasePresenter<SettingsView> {
     }
 
     public void moveFiles(DocumentFile dst) {
-        mCompositeSubscription.add(Storage.moveRootDir(mBaseView.getAppInstance().getContentResolver(),
+        mCompositeSubscription.add(Storage.moveRootDir(App.application.getContentResolver(),
                 mBaseView.getAppInstance().getDocumentFile(), dst)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<String>() {
@@ -81,7 +80,7 @@ public class SettingsPresenter extends BasePresenter<SettingsView> {
 
     public void scanTask() {
         // Todo 重写一下
-        mCompositeSubscription.add(Download.scan(mBaseView.getAppInstance().getContentResolver(), mBaseView.getAppInstance().getDocumentFile())
+        mCompositeSubscription.add(Download.scan(App.application.getContentResolver(), mBaseView.getAppInstance().getDocumentFile())
                 .doOnNext(new Action1<Pair<Comic, List<Task>>>() {
                     @Override
                     public void call(Pair<Comic, List<Task>> pair) {

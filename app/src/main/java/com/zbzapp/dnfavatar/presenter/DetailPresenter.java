@@ -1,5 +1,6 @@
 package com.zbzapp.dnfavatar.presenter;
 
+import com.zbzapp.dnfavatar.App;
 import com.zbzapp.dnfavatar.core.Backup;
 import com.zbzapp.dnfavatar.core.Download;
 import com.zbzapp.dnfavatar.core.Manga;
@@ -14,17 +15,16 @@ import com.zbzapp.dnfavatar.model.Task;
 import com.zbzapp.dnfavatar.rx.RxBus;
 import com.zbzapp.dnfavatar.rx.RxEvent;
 import com.zbzapp.dnfavatar.ui.view.DetailView;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Hiroshi on 2016/7/4.
@@ -152,7 +152,7 @@ public class DetailPresenter extends BasePresenter<DetailView> {
                 .doOnNext(new Action1<List<Comic>>() {
                     @Override
                     public void call(List<Comic> list) {
-                        Backup.saveComicAuto(mBaseView.getAppInstance().getContentResolver(),
+                        Backup.saveComicAuto(App.application.getContentResolver(),
                                 mBaseView.getAppInstance().getDocumentFile(), list);
                     }
                 })
@@ -206,7 +206,7 @@ public class DetailPresenter extends BasePresenter<DetailView> {
                         }
                     }
                 });
-                Download.updateComicIndex(mBaseView.getAppInstance().getContentResolver(),
+                Download.updateComicIndex(App.application.getContentResolver(),
                         mBaseView.getAppInstance().getDocumentFile(), cList, mComic);
                 subscriber.onNext(result);
                 subscriber.onCompleted();

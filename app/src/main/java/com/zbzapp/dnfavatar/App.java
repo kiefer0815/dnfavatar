@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.multidex.MultiDexApplication;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
@@ -39,11 +38,16 @@ import org.greenrobot.greendao.identityscope.IdentityScopeType;
 
 import java.io.File;
 
+import static android.content.Context.WINDOW_SERVICE;
+
 /**
  * Created by Hiroshi on 2016/7/5.
  */
-public class App extends MultiDexApplication implements AppGetter {
+public class App  implements AppGetter {
+    public static Application application = null;
     public static volatile Context applicationContext = null;
+    private static App mInstance;
+
     public static int mWidthPixels;
     public static int mHeightPixels;
     public static int mCoverWidthPixels;
@@ -59,23 +63,30 @@ public class App extends MultiDexApplication implements AppGetter {
     private DBOpenHelper mOpenHelper;
     private DaoSession mDaoSession;
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        applicationContext = getApplicationContext();
+    public static App getInstance() {
+        if (mInstance == null) {
+            synchronized (App.class) {
+                if (mInstance == null) {
+                    mInstance = new App();
+                }
+            }
+        }
+        return mInstance;
+    }
 
-        mOpenHelper = new DBOpenHelper(this, "cimoc.db");
+    public void init() {
+        mOpenHelper = new DBOpenHelper(applicationContext, "cimoc.db");
         UpdateHelper.update(getPreferenceManager(), getDaoSession());
         ImagePipelineConfig config = OkHttpImagePipelineConfigFactory
                 .newBuilder(applicationContext, getHttpClient())
                 .build();
-        Fresco.initialize(this,config);
+        Fresco.initialize(applicationContext,config);
         initPixels();
         MultiProcessFlag.setMultiProcess(true);
-        registerActivityLifecycleCallbacks(new AppForeBackStatusCallback());
+        application.registerActivityLifecycleCallbacks(new AppForeBackStatusCallback());
         FileDownloader.init(applicationContext);
         createCacheDir();
-        QbSdk.initX5Environment(this,null);
+        QbSdk.initX5Environment(applicationContext,null);
     }
 
     public void createCacheDir() {
@@ -115,7 +126,7 @@ public class App extends MultiDexApplication implements AppGetter {
 
     private void initPixels() {
         DisplayMetrics metrics = new DisplayMetrics();
-        ((WindowManager) getSystemService(WINDOW_SERVICE)).getDefaultDisplay().getMetrics(metrics);
+        ((WindowManager) applicationContext.getSystemService(WINDOW_SERVICE)).getDefaultDisplay().getMetrics(metrics);
         mWidthPixels = metrics.widthPixels;
         mHeightPixels = metrics.heightPixels;
         mCoverWidthPixels = mWidthPixels / 3;
@@ -125,7 +136,7 @@ public class App extends MultiDexApplication implements AppGetter {
 
     public void initRootDocumentFile() {
         String uri = mPreferenceManager.getString(PreferenceManager.PREF_OTHER_STORAGE);
-        mDocumentFile = Storage.initRoot(this, uri);
+        mDocumentFile = Storage.initRoot(applicationContext, uri);
     }
 
     public DocumentFile getDocumentFile() {
@@ -144,7 +155,7 @@ public class App extends MultiDexApplication implements AppGetter {
 
     public PreferenceManager getPreferenceManager() {
         if (mPreferenceManager == null) {
-            mPreferenceManager = new PreferenceManager(getApplicationContext());
+            mPreferenceManager = new PreferenceManager(applicationContext);
         }
         return mPreferenceManager;
     }
@@ -159,7 +170,7 @@ public class App extends MultiDexApplication implements AppGetter {
 
     public ControllerBuilderProvider getBuilderProvider() {
         if (mBuilderProvider == null) {
-            mBuilderProvider = new ControllerBuilderProvider(getApplicationContext(),
+            mBuilderProvider = new ControllerBuilderProvider(applicationContext,
                     SourceManager.getInstance(this).new HeaderGetter(), true);
         }
         return mBuilderProvider;

@@ -1,5 +1,6 @@
 package com.zbzapp.dnfavatar.presenter;
 
+import com.zbzapp.dnfavatar.App;
 import com.zbzapp.dnfavatar.core.Download;
 import com.zbzapp.dnfavatar.manager.ComicManager;
 import com.zbzapp.dnfavatar.manager.SourceManager;
@@ -12,16 +13,15 @@ import com.zbzapp.dnfavatar.rx.RxBus;
 import com.zbzapp.dnfavatar.rx.RxEvent;
 import com.zbzapp.dnfavatar.rx.ToAnotherList;
 import com.zbzapp.dnfavatar.ui.view.TaskView;
-
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
+
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * Created by Hiroshi on 2016/9/7.
@@ -111,7 +111,7 @@ public class TaskPresenter extends BasePresenter<TaskView> {
                     public void call(List<Task> list) {
                         updateTaskList(list);
                         if (!mComic.getLocal()) {
-                            final List<String> sList = Download.getComicIndex(mBaseView.getAppInstance().getContentResolver(),
+                            final List<String> sList = Download.getComicIndex(App.application.getContentResolver(),
                                     mBaseView.getAppInstance().getDocumentFile(), mComic, mSourceManager.getParser(mComic.getSource()).getTitle());
                             if (sList != null) {
                                 Collections.sort(list, new Comparator<Task>() {
